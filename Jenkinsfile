@@ -66,6 +66,7 @@ pipeline {
                     sh 'cd /var/www/html/laravel/ && sudo composer update && cd /var/www/html/laravel/ && sudo composer install && sudo php artisan key:generate && sudo php artisan migrate'
                     sh 'sudo chown -R www-data:www-data /var/www/html/laravel/'
                     sh 'sudo chmod -R 775 /var/www/html/laravel/storage'
+                    sh 'sudo rm -fr /var/www/html/laravel/*.tar.gz'
             
              }
             
