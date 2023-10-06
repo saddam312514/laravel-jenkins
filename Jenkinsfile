@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your PHP application (e.g., run composer, compile assets, etc.)
-                sh 'composer update && composer install'
+                //sh 'composer update && composer install'
                 sh 'npm install'
                 sh 'npm run production'
             }
@@ -39,9 +39,10 @@ pipeline {
             steps{
                  build job: 'Deploy_Application_Staging_laravel'
                 
-                 sh 'sudo composer update && sudo composer install && sudo php artisan key:generate'
-                 sh 'sudo chown -R www-data:www-data /var/www/html/blog'
-                 sh 'sudo chmod -R 775 /var/www/html/blog/storage'
+                 sh 'sudo composer update && sudo composer install'
+                 sh 'sudo cp -r /var/lib/jenkins/workspace/.env /var/lib/jenkins/workspace/Deploy_Application_Staging_laravel/'
+                 sh 'sudo chown -R www-data:www-data /var/lib/jenkins/workspace/Deploy_Application_Staging_laravel/'
+                 sh 'sudo chmod -R 775 /var/lib/jenkins/workspace/Deploy_Application_Staging_laravel/storage'
                  // def sourceDir = '/var/lib/jenkins/workspace/Deploy_Application_Staging_laravel/'
                  // def destinationDir = '/var/www/html/blog'
                 // Copy files from source to destination
