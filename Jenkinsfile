@@ -16,15 +16,10 @@ pipeline {
                 sh 'npm run production'
             }
         }
-       stage('Archive as ZIP') {
+   stage('Archive as ZIP') {
             steps {
-                // Archive the Laravel project as a ZIP file
-                archiveArtifacts allowEmptyArchive: true, artifacts: '/*', excludes: ''
-                // script {
-                //     // Rename the archived ZIP file to a specific name (optional)
-                //     def zipFileName = "laravel-project.zip"
-                //     sh "mv build/*.zip ${zipFileName}"
-                // }
+                // Archive the Laravel project as a ZIP file using the full path
+                archiveArtifacts allowEmptyArchive: true, artifacts: '/var/lib/jenkins/workspace/Package_install_Laravel/**/*'
             }
         }
          stage('Deploy to Production'){
