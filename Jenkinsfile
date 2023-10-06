@@ -48,7 +48,7 @@ pipeline {
 
                 // Copy all contents from the workspace to the destination directory
                 sh "sudo cp -rp /var/lib/jenkins/workspace/Deploy_Application_Staging_laravel/* /var/www/html/laravel"
-                 sh 'sudo cd /var/www/html/laravel/sudo composer update && cd /var/www/html/laravel/sudo composer install'
+                 sh 'cd /var/www/html/laravel/sudo composer update && cd /var/www/html/laravel/sudo composer install'
                  sh 'sudo cp -r /var/lib/jenkins/workspace/.env /var/www/html/laravel/'
                  sh 'sudo chown -R www-data:www-data /var/www/html/laravel/'
                  sh 'sudo chmod -R 775 /var/www/html/laravel/storage'
