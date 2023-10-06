@@ -42,10 +42,10 @@ pipeline {
                  sh 'sudo composer update && sudo composer install && sudo php artisan key:generate'
                  sh 'sudo chown -R www-data:www-data /var/www/html/blog'
                  sh 'sudo chmod -R 775 /var/www/html/blog/storage'
-                 def sourceDir = '/var/lib/jenkins/workspace/Deploy_Application_Staging_laravel/'
-                 def destinationDir = '/var/www/html/blog'
+                 // def sourceDir = '/var/lib/jenkins/workspace/Deploy_Application_Staging_laravel/'
+                 // def destinationDir = '/var/www/html/blog'
                 // Copy files from source to destination
-                sh "cp -rp ${sourceDir}/* ${destinationDir}/"
+                //sh "cp -rp ${sourceDir}/* ${destinationDir}/"
 
              }
             
