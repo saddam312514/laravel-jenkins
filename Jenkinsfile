@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build Application') {
             steps {
-                sh "Deploy the application"
+                echo "Deploy the application"
             }
             post {
                 success {
