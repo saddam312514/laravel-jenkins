@@ -38,15 +38,20 @@ pipeline {
          stage('Deploy in Staging Environment'){
             steps{
                  build job: 'Deploy_Application_Staging_laravel'
-                
+                 // Define the source and destination directories
+                def sourceDir = "${WORKSPACE}/"
+                def destinationDir = "/var/www/html/laravel"
+
+                // Create the destination directory if it doesn't exist
+                sh "mkdir -p ${destinationDir}"
+
+                // Copy all contents from the workspace to the destination directory
+                sh "cp -rp ${sourceDir}/Deploy_Application_Staging_laravel/* ${destinationDir}"
                  sh 'sudo composer update && sudo composer install'
-                 sh 'sudo cp -r /var/lib/jenkins/workspace/.env /var/lib/jenkins/workspace/Deploy_Application_Staging_laravel/'
-                 sh 'sudo chown -R www-data:www-data /var/lib/jenkins/workspace/Deploy_Application_Staging_laravel/'
-                 sh 'sudo chmod -R 775 /var/lib/jenkins/workspace/Deploy_Application_Staging_laravel/storage'
-                 // def sourceDir = '/var/lib/jenkins/workspace/Deploy_Application_Staging_laravel/'
-                 // def destinationDir = '/var/www/html/blog'
-                // Copy files from source to destination
-                //sh "cp -rp ${sourceDir}/* ${destinationDir}/"
+                 sh 'sudo cp -r /var/lib/jenkins/workspace/.env ${destinationDir}'
+                 sh 'sudo chown -R www-data:www-data ${destinationDir}'
+                 sh 'sudo chmod -R 775 ${destinationDir}'
+                
 
              }
             
