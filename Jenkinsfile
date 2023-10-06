@@ -12,8 +12,8 @@ pipeline {
             steps {
                 // Build your PHP application (e.g., run composer, compile assets, etc.)
                 sh 'composer update && composer install'
-                sh 'php artisan build'
-                // Add more build steps as needed
+                sh 'npm install'
+                sh 'npm run production'
             }
         }
         stage('Archive Artifacts') {
