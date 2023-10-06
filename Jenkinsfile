@@ -2,24 +2,25 @@
 pipeline {
     agent any
     stages {
-        stage('Build Application') {
+        stage('Checkout') {
             steps {
-                echo "Deploy the application"
-            }
-            post {
-                success {
-                    echo "Now Archiving the Artifacts...."
-                    archiveArtifacts artifacts: '**/*'
-                }
+                // Checkout your source code from the repository
+                checkout scm
             }
         }
-         stage('Deploy in Staging Environment'){
-            steps{
-                 build job: 'Deploy_Application_Staging_laravel'
-
-             }
-            
-         }
+        stage('Build') {
+            steps {
+                // Build your PHP application (e.g., run composer, compile assets, etc.)
+                sh 'composer update && composer install'
+                // Add more build steps as needed
+            }
+        }
+        stage('Archive Artifacts') {
+            steps {
+                // Archive build artifacts (e.g., compiled code, assets, etc.)
+                archiveArtifacts artifacts: '**/*.zip'
+            }
+        }
          stage('Deploy to Production'){
              steps{
                  timeout(time:5, unit:'DAYS'){
