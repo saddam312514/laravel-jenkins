@@ -19,7 +19,7 @@ pipeline {
         stage('Archive Artifacts') {
             steps {
                 // Archive build artifacts (e.g., compiled code, assets, etc.)
-                archiveArtifacts artifacts: '/var/lib/jenkins/workspace/Package_install_Laravel/*', allowEmptyArchive: true
+                archiveArtifacts artifacts: '**/build/*', allowEmptyArchive: true
             }
         }
          stage('Deploy to Production'){
