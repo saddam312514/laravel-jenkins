@@ -88,7 +88,7 @@ pipeline {
                     sh 'cd /var/www/html/live/ && sudo composer update && cd /var/www/html/live/ && sudo composer install && sudo php artisan key:generate && sudo php artisan migrate'
                     sh 'sudo chown -R www-data:www-data /var/www/html/live/'
                     sh 'sudo chmod -R 775 /var/www/html/live/storage'
-                    sh 'rm -fr /var/www/html/live/*.tar.gz'
+                    sh 'sudo rm -fr /var/www/html/live/*.tar.gz'
              }
          }
     }
