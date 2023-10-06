@@ -6,6 +6,7 @@ pipeline {
             steps {
                 // Checkout your source code from the repository
                 checkout scm
+                // I miss ayohc
             }
         }
         stage('Build') {
