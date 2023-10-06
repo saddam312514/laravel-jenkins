@@ -58,7 +58,7 @@ pipeline {
                 // // Create the destination directory if it doesn't exist
                    sh "sudo mkdir -p /var/www/html/laravel"
 
-                // // Copy all contents from the workspace to the destination directory
+               
                     sh "sudo cp -rp /var/lib/jenkins/workspace/Deploy_Application_Staging_laravel/* /var/www/html/laravel"
                     sh 'sudo cp -r /var/lib/jenkins/workspace/.env /var/www/html/laravel'
                  
