@@ -23,15 +23,29 @@ pipeline {
    //          }
    //      }
 
-             stage('Archive as ZIP') {
+        //      stage('Archive as ZIP') {
+        //     steps {
+        //         // Archive the Laravel project as a ZIP file
+        //         archiveArtifacts allowEmptyArchive: true, artifacts: '**/*', excludes: ''
+        //         // script {
+        //         //     // Rename the archived ZIP file to a specific name (optional)
+        //         //     def zipFileName = "/var/lib/jenkins/workspace/Package_install_Laravel.zip"
+        //         //     sh "mv *zip ${zipFileName}"
+        //         // }
+        //     }
+        // }
+
+
+        stage('Build Tar File') {
             steps {
-                // Archive the Laravel project as a ZIP file
-                archiveArtifacts allowEmptyArchive: true, artifacts: '**/*', excludes: ''
-                // script {
-                //     // Rename the archived ZIP file to a specific name (optional)
-                //     def zipFileName = "/var/lib/jenkins/workspace/Package_install_Laravel.zip"
-                //     sh "mv *zip ${zipFileName}"
-                // }
+                // Create a tar file from your Laravel project files (replace with your tar command)
+                sh 'tar -czf laravel-project.tar.gz *'
+            }
+        }
+        stage('Archive Tar File') {
+            steps {
+                // Archive the tar file as an artifact
+                archiveArtifacts artifacts: 'laravel-project.tar.gz', allowEmptyArchive: true
             }
         }
 
