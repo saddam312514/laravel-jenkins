@@ -38,12 +38,12 @@ pipeline {
          stage('Deploy in Staging Environment'){
             steps{
 
-                def sourceDir = "${WORKSPACE}/"
-                def destinationDir = "/var/www/html/laravel"
+         
                  build job: 'Deploy_Application_Staging_laravel'
                  // Define the source and destination directories
                 
-
+                   def sourceDir = "${WORKSPACE}/"
+                  def destinationDir = "/var/www/html/laravel"
                 // Create the destination directory if it doesn't exist
                 sh "mkdir -p ${destinationDir}"
 
