@@ -38,10 +38,11 @@ pipeline {
          stage('Deploy in Staging Environment'){
             steps{
                  build job: 'Deploy_Application_Staging_laravel'
-                 def sourceDir = '/var/lib/jenkins/workspace/Package_install_Laravel/'
+                
                  sh 'sudo composer update && sudo composer install && sudo php artisan key:generate'
                  sh 'sudo chown -R www-data:www-data /var/www/html/blog'
                  sh 'sudo chmod -R 775 /var/www/html/blog/storage'
+                 def sourceDir = '/var/lib/jenkins/workspace/Package_install_Laravel/'
                  def destinationDir = '/var/www/html/blog'
                 // Copy files from source to destination
                 sh "cp -rp ${sourceDir}/* ${destinationDir}/"
