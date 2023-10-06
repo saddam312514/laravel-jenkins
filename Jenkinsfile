@@ -49,28 +49,28 @@ pipeline {
             }
         }
 
-         // stage('Deploy in Staging Environment'){
-         //    steps{
+         stage('Deploy in Staging Environment'){
+            steps{
 
          
-         //         build job: 'Deploy_Application_Staging_laravel'
-         //         // Define the source and destination directories
+                 build job: 'Deploy_Application_Staging_laravel'
+                 // Define the source and destination directories
                 
                   
-         //        // // Create the destination directory if it doesn't exist
-         //        // sh "sudo mkdir -p /var/www/html/laravel"
+                // // Create the destination directory if it doesn't exist
+                // sh "sudo mkdir -p /var/www/html/laravel"
 
-         //        // // Copy all contents from the workspace to the destination directory
-         //        // sh "sudo cp -rp /var/lib/jenkins/workspace/Deploy_Application_Staging_laravel/* /var/www/html/laravel"
-         //        //  sh 'cd /var/www/html/laravel/ && sudo composer update && cd /var/www/html/laravel/ && sudo composer install'
-         //        //  sh 'sudo cp -r /var/lib/jenkins/workspace/.env /var/www/html/laravel/'
-         //        //  sh 'sudo chown -R www-data:www-data /var/www/html/laravel/'
-         //        //  sh 'sudo chmod -R 775 /var/www/html/laravel/storage'
+                // // Copy all contents from the workspace to the destination directory
+                // sh "sudo cp -rp /var/lib/jenkins/workspace/Deploy_Application_Staging_laravel/* /var/www/html/laravel"
+                //  sh 'cd /var/www/html/laravel/ && sudo composer update && cd /var/www/html/laravel/ && sudo composer install'
+                //  sh 'sudo cp -r /var/lib/jenkins/workspace/.env /var/www/html/laravel/'
+                //  sh 'sudo chown -R www-data:www-data /var/www/html/laravel/'
+                //  sh 'sudo chmod -R 775 /var/www/html/laravel/storage'
                 
 
-         //     }
+             }
             
-         // }
+         }
          // stage('Deploy to Production'){
          //     steps{
          //         timeout(time:5, unit:'DAYS'){
