@@ -19,7 +19,7 @@ pipeline {
    stage('Archive as ZIP') {
             steps {
                 // Archive the Laravel project as a ZIP file using the full path
-                archiveArtifacts allowEmptyArchive: true, artifacts: '/var/lib/jenkins/workspace/Package_install_Laravel/**/*'
+                archiveArtifacts allowEmptyArchive: true, artifacts: '**/*'
             }
         }
          stage('Deploy to Production'){
