@@ -60,6 +60,9 @@ pipeline {
 
          stage('Deploy in Staging Environment'){
             steps{
+                    timeout(time:5, unit:'DAYS'){
+                     input message:'Approve Staging Deployment?'
+                 }
 
          
                  build job: 'Deploy_Application_Staging_laravel'
