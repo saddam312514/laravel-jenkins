@@ -11,7 +11,8 @@ pipeline {
         }
           stage('Cloning Git') {
             steps {
-              checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/saddam312514/laravel-jenkins.git']])
+              // checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/saddam312514/laravel-jenkins.git']])
+                checkout scm
             }
         }
 
