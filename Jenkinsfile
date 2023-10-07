@@ -2,7 +2,6 @@
 pipeline {
     agent any
     stages {
-      stages {
         stage('Build') {
             steps {
                 // Build your PHP application (e.g., run composer, compile assets, etc.)
