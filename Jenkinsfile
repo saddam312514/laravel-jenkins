@@ -2,6 +2,13 @@
 pipeline {
     agent any
     stages {
+
+        stage('Clean Workspace') {
+            steps {
+                // Delete the workspace before the build starts
+                deleteDir()
+           }
+        }
           stage('Cloning Git') {
             steps {
               checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/saddam312514/laravel-jenkins.git']])
