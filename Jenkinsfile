@@ -2,11 +2,10 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
+      stages {
+        stage('Cloning Git') {
             steps {
-                // Checkout your source code from the repository
-                checkout scm
-                // I miss ayohc
+               checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/saddam312514/laravel-jenkins.git']])
             }
         }
         stage('Build') {
