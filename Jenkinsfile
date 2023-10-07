@@ -3,11 +3,6 @@ pipeline {
     agent any
     stages {
       stages {
-        stage('Cloning Git') {
-            steps {
-               checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/saddam312514/laravel-jenkins.git']])
-            }
-        }
         stage('Build') {
             steps {
                 // Build your PHP application (e.g., run composer, compile assets, etc.)
